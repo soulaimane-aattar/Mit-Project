@@ -24,10 +24,14 @@ class Category
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255)
      */
-    private $nom;
+    public $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="category", cascade={"persist", "remove"})
+     */
+    public $products;
 
     /**
      * Get id
@@ -39,28 +43,6 @@ class Category
         return $this->id;
     }
 
-    /**
-     * Set nom
-     *
-     * @param string $nom
-     *
-     * @return Category
-     */
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
-
-    /**
-     * Get nom
-     *
-     * @return string
-     */
-    public function getNom()
-    {
-        return $this->nom;
-    }
+ 
 }
 

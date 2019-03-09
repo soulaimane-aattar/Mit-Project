@@ -1,16 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Category creation</h1>
+        <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Add new category</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+    <div class="box-body">
+        <div class="form-group">
+            {{ form_widget(form) }}
+            <div class="box-footer">
+                <input type="submit" class="btn btn-success" value="Create" />
+                <a class="btn btn-primary" href="{{ path('category_index') }}"><i class="fa fa-repeat"></i>Back to the list</a>
+            </div>
+        </div>
+    </div>
     {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('category_index') }}">Back to the list</a>
-        </li>
-    </ul>
+</div>
 {% endblock %}

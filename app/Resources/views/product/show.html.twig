@@ -1,40 +1,44 @@
-{% extends 'template.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Product</h1>
-
-    <table>
+    <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Product Informations</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
         <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ product.id }}</td>
             </tr>
             <tr>
-                <th>Nom</th>
-                <td>{{ product.nom }}</td>
+                <th>Name</th>
+                <td>{{ product.name }}</td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>{{ product.description }}</td>
             </tr>
             <tr>
-                <th>Prix</th>
-                <td>{{ product.prix }}</td>
+                <th>Price</th>
+                <td>{{ product.price }}</td>
+            </tr>
+            <tr>
+                <th>Categorie</th>
+                <td>{{ product.category.name}}</td>
+            </tr>
+            <tr>
+                <th>Action</th>
+                <td>
+                <div class="btn-group">
+                  <a class="btn btn-success" href="{{ path('product_edit', { 'id': product.id }) }}"><i class="fa fa-edit"></i></a>
+                   <a class="btn btn-danger" href="{{ path('product_delete', { 'id': product.id }) }}"><i class="fa fa-trash"></i></a>
+                </div>
+                </td>
             </tr>
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('product_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('product_edit', { 'id': product.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
 {% endblock %}
